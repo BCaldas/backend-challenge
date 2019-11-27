@@ -8,8 +8,8 @@
         <version>2.2.1.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.invilla.acme</groupId>
-    <artifactId>store</artifactId>
+    <groupId>com.invilla.acme.store</groupId>
+    <artifactId>store-app</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>store</name>
     <description>Store microservice for acme company</description>

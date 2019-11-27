@@ -1,16 +1,16 @@
-package com.invilla.acme.service.imp;
+package com.invilla.acme.store.service.imp;
 
-import com.invilla.acme.model.Store;
-import com.invilla.acme.repository.StoreRepository;
-import com.invilla.acme.service.StoreService;
+import com.invilla.acme.store.model.Store;
+import com.invilla.acme.store.repository.StoreRepository;
+import com.invilla.acme.store.service.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
-import static com.invilla.acme.repository.specification.StoreSpecification.addressEquals;
-import static com.invilla.acme.repository.specification.StoreSpecification.nameEquals;
+import static com.invilla.acme.store.repository.specification.StoreSpecification.addressEquals;
+import static com.invilla.acme.store.repository.specification.StoreSpecification.nameEquals;
 import static org.springframework.data.jpa.domain.Specification.where;
 
 @Service

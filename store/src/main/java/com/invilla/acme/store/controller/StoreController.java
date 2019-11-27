@@ -1,7 +1,7 @@
-package com.invilla.acme.controller;
+package com.invilla.acme.store.controller;
 
-import com.invilla.acme.model.Store;
-import com.invilla.acme.service.StoreService;
+import com.invilla.acme.store.model.Store;
+import com.invilla.acme.store.service.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

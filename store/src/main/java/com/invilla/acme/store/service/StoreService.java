@@ -1,6 +1,6 @@
-package com.invilla.acme.service;
+package com.invilla.acme.store.service;
 
-import com.invilla.acme.model.Store;
+import com.invilla.acme.store.model.Store;
 
 import java.util.List;
 

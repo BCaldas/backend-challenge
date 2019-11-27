@@ -1,6 +1,6 @@
-package com.invilla.acme.repository;
+package com.invilla.acme.store.repository;
 
-import com.invilla.acme.model.Store;
+import com.invilla.acme.store.model.Store;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
