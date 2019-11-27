@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/store")
 public class StoreController {
@@ -15,12 +18,24 @@ public class StoreController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Store addStore(@RequestBody Store newStore) {
+    public Store addStore(@RequestBody @Valid Store newStore) {
         return storeService.addStore(newStore);
     }
 
     @PutMapping("/{id}")
-    public Store updateStore(@PathVariable Integer id, @RequestBody Store updatedStore) {
+    public Store updateStore(@PathVariable Long id, @RequestBody @Valid Store updatedStore) {
         return storeService.updateStore(id, updatedStore);
+    }
+
+    @GetMapping("/query")
+    public Store getByParameters(@RequestParam Map<String, String> parameters) {
+        String name = parameters.get("name");
+        String address = parameters.get("address");
+        return storeService.findByNameOrAddress(name, address);
+    }
+
+    @GetMapping("/{id}")
+    public Store getById(@PathVariable Long id) {
+        return storeService.getById(id);
     }
 }

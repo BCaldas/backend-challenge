@@ -14,14 +14,13 @@ public class StoreServiceImp implements StoreService {
     @Autowired
     private StoreRepository storeRepository;
 
-
     @Override
     public Store addStore(Store newStore) {
         return saveStore(newStore);
     }
 
     @Override
-    public Store updateStore(Integer storeId, Store updatedStore) {
+    public Store updateStore(Long storeId, Store updatedStore) {
         Store storeToUpdate = getById(storeId);
 
         storeToUpdate.setAddress(updatedStore.getAddress());
@@ -29,7 +28,13 @@ public class StoreServiceImp implements StoreService {
         return saveStore(storeToUpdate);
     }
 
-    public Store getById(Integer id) {
+    @Override
+    public Store findByNameOrAddress(String name, String address) {
+        return storeRepository.findByNameOrAddress(name, address);
+    }
+
+    @Override
+    public Store getById(Long id) {
         return storeRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Store not found"));
     }
