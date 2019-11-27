@@ -1,6 +1,14 @@
 spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
   datasource:
-    url: jdbc:mysql://localhost/product
+    url: jdbc:mysql://localhost:3306/acme_store?useTimezone=true&serverTimezone=UTC
     username: root
-    password:
-    driver-class-name: com.mysql.jdbc.Driver
+    password: root
+    driverClassName: com.mysql.cj.jdbc.Driver
+
+eureka:
+  client:
+    enabled: false
