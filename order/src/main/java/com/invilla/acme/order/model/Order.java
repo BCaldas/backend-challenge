@@ -1,5 +1,6 @@
 package com.invilla.acme.order.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.invilla.acme.order.enums.EStatus;
 
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "orders")
 public class Order {
 
     @Id
@@ -23,12 +25,15 @@ public class Order {
     @NotEmpty(message = "{order.address.empty}")
     private String address;
 
+    @Column(name = "confirmation_date")
     private LocalDate confirmationDate;
 
     @Enumerated(EnumType.STRING)
     private EStatus status;
 
+    @JsonManagedReference
     @Size(min = 1, message = "{order.items.size}")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Item> items = new ArrayList<>();
 
     public Long getId() {

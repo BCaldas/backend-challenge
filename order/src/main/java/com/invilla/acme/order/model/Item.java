@@ -1,16 +1,15 @@
 package com.invilla.acme.order.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @Entity
+@Table(name = "order_items")
 public class Item {
 
     @Id
@@ -22,11 +21,17 @@ public class Item {
     @NotEmpty(message = "{item.description.empty}")
     private String description;
 
+    @Column(name = "unity_price")
     @NotNull(message = "{item.price.null}")
     private BigDecimal unitPrice;
 
     @NotNull(message = "{item.quantity.null}")
     private Integer quantity;
+
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id")
+    private Order order;
 
     public Long getId() {
         return id;
@@ -58,6 +63,14 @@ public class Item {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 }
 

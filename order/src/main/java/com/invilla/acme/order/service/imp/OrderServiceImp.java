@@ -1,5 +1,6 @@
 package com.invilla.acme.order.service.imp;
 
+import com.invilla.acme.order.enums.EStatus;
 import com.invilla.acme.order.model.Order;
 import com.invilla.acme.order.repository.OrderRepository;
 import com.invilla.acme.order.service.OrderService;
@@ -17,6 +18,8 @@ public class OrderServiceImp implements OrderService {
 
     @Override
     public Order addOrder(Order newOrder) {
+        newOrder.setStatus(EStatus.PAYMENT_PENDING);
+        newOrder.getItems().forEach(item -> item.setOrder(newOrder));
         return saveOrder(newOrder);
     }
 
