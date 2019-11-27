@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -27,11 +28,11 @@ public class StoreController {
         return storeService.updateStore(id, updatedStore);
     }
 
-    @GetMapping("/query")
-    public Store getByParameters(@RequestParam Map<String, String> parameters) {
+    @GetMapping
+    public List<Store> getAll(@RequestParam Map<String, String> parameters) {
         String name = parameters.get("name");
         String address = parameters.get("address");
-        return storeService.findByNameOrAddress(name, address);
+        return storeService.findAll(name, address);
     }
 
     @GetMapping("/{id}")

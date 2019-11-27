@@ -2,11 +2,13 @@ package com.invilla.acme.service;
 
 import com.invilla.acme.model.Store;
 
+import java.util.List;
+
 public interface StoreService {
 
     Store addStore(Store newStore);
     Store updateStore(Long storeId, Store updatedStore);
-    Store findByNameOrAddress(String name, String address);
+    List<Store> findAll(String name, String address);
 
     Store getById(Long id);
 }

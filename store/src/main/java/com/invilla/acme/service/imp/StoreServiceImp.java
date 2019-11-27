@@ -7,6 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.List;
+
+import static com.invilla.acme.repository.specification.StoreSpecification.addressEquals;
+import static com.invilla.acme.repository.specification.StoreSpecification.nameEquals;
+import static org.springframework.data.jpa.domain.Specification.where;
 
 @Service
 public class StoreServiceImp implements StoreService {
@@ -29,14 +34,21 @@ public class StoreServiceImp implements StoreService {
     }
 
     @Override
-    public Store findByNameOrAddress(String name, String address) {
-        return storeRepository.findByNameOrAddress(name, address);
+    public List<Store> findAll(String name, String address) {
+        List<Store> stores;
+        if (name == null && address == null) {
+            stores = storeRepository.findAll();
+        } else {
+            stores = storeRepository.findAll(where(nameEquals(name))
+                    .or(addressEquals(address)));
+        }
+        return stores;
     }
 
     @Override
     public Store getById(Long id) {
         return storeRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Store not found"));
+                .orElseThrow(() -> new EntityNotFoundException("Store not found."));
     }
 
     private Store saveStore(Store store) {
