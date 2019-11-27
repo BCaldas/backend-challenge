@@ -18,4 +18,9 @@ public class StoreController {
     public Store addStore(@RequestBody Store newStore) {
         return storeService.addStore(newStore);
     }
+
+    @PutMapping("/{id}")
+    public Store updateStore(@PathVariable Integer id, @RequestBody Store updatedStore) {
+        return storeService.updateStore(id, updatedStore);
+    }
 }
