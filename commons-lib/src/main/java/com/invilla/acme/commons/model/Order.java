@@ -1,8 +1,8 @@
-package com.invilla.acme.order.model;
+package com.invilla.acme.commons.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.invilla.acme.order.enums.EOrderStatus;
+import com.invilla.acme.commons.model.enums.EOrderStatus;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -39,6 +39,9 @@ public class Order {
     @JsonManagedReference
     @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
     private Payment payment;
+
+    @NotNull(message = "{order.store.null}")
+    private Long storeId;
 
     public Long getId() {
         return id;
@@ -86,5 +89,13 @@ public class Order {
 
     public void setPayment(Payment payment) {
         this.payment = payment;
+    }
+
+    public Long getStoreId() {
+        return storeId;
+    }
+
+    public void setStoreId(Long storeId) {
+        this.storeId = storeId;
     }
 }

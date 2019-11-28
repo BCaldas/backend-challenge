@@ -1,4 +1,4 @@
-package com.invilla.acme.order.enums;
+package com.invilla.acme.commons.model.enums;
 
 public enum EPaymentStatus {
 

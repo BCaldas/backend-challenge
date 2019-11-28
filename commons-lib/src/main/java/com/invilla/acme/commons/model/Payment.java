@@ -1,8 +1,8 @@
-package com.invilla.acme.order.model;
+package com.invilla.acme.commons.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.invilla.acme.order.enums.EPaymentStatus;
+import com.invilla.acme.commons.model.enums.EPaymentStatus;
 import org.hibernate.validator.constraints.CreditCardNumber;
 
 import javax.persistence.*;

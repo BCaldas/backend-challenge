@@ -1,5 +1,4 @@
-package com.invilla.acme.store.model;
-
+package com.invilla.acme.commons.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
