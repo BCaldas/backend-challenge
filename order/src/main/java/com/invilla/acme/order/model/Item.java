@@ -2,6 +2,7 @@ package com.invilla.acme.order.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.invilla.acme.order.enums.EItemStatus;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -32,6 +33,9 @@ public class Item {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
     private Order order;
+
+    @Enumerated(EnumType.STRING)
+    private EItemStatus status;
 
     public Long getId() {
         return id;
@@ -71,6 +75,14 @@ public class Item {
 
     public void setOrder(Order order) {
         this.order = order;
+    }
+
+    public EItemStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(EItemStatus status) {
+        this.status = status;
     }
 }
 
