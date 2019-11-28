@@ -1,0 +1,7 @@
+com\invilla\acme\commons\model\enums\EItemStatus.class
+com\invilla\acme\commons\model\Item.class
+com\invilla\acme\commons\model\enums\EPaymentStatus.class
+com\invilla\acme\commons\model\enums\EOrderStatus.class
+com\invilla\acme\commons\model\Store.class
+com\invilla\acme\commons\model\Order.class
+com\invilla\acme\commons\model\Payment.class
