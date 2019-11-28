@@ -1,7 +1,8 @@
 package com.invilla.acme.order.controller;
 
-import com.invilla.acme.order.enums.EStatus;
+import com.invilla.acme.order.enums.EOrderStatus;
 import com.invilla.acme.order.model.Order;
+import com.invilla.acme.order.model.Payment;
 import com.invilla.acme.order.repository.OrderFilter;
 import com.invilla.acme.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,8 +46,19 @@ public class OrderController {
         }
 
         if (status != null && !status.isEmpty()) {
-            orderFilter.setStatus(EStatus.valueOf(status.toUpperCase()));
+            orderFilter.setStatus(EOrderStatus.valueOf(status.toUpperCase()));
         }
         return orderService.findAllWithFilter(orderFilter);
+    }
+
+    @PatchMapping("/{id}/payment")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Order createPayment(@PathVariable Long id, @RequestBody Payment newPayment) {
+        return orderService.createPayment(newPayment, id);
+    }
+
+    @PutMapping("/{id}/refund")
+    public Order refundOrder(@PathVariable Long id) {
+        return orderService.refundOrder(id);
     }
 }

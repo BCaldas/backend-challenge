@@ -2,7 +2,7 @@ package com.invilla.acme.order.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.invilla.acme.order.enums.EStatus;
+import com.invilla.acme.order.enums.EOrderStatus;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -29,12 +29,16 @@ public class Order {
     private LocalDate confirmationDate;
 
     @Enumerated(EnumType.STRING)
-    private EStatus status;
+    private EOrderStatus status;
 
     @JsonManagedReference
     @Size(min = 1, message = "{order.items.size}")
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Item> items = new ArrayList<>();
+
+    @JsonManagedReference
+    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
+    private Payment payment;
 
     public Long getId() {
         return id;
@@ -52,11 +56,11 @@ public class Order {
         this.confirmationDate = confirmationDate;
     }
 
-    public EStatus getStatus() {
+    public EOrderStatus getStatus() {
         return status;
     }
 
-    public void setStatus(EStatus status) {
+    public void setStatus(EOrderStatus status) {
         this.status = status;
     }
 
@@ -74,5 +78,13 @@ public class Order {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
     }
 }
