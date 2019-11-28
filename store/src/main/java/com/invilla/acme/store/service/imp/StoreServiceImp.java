@@ -1,6 +1,6 @@
 package com.invilla.acme.store.service.imp;
 
-import com.invilla.acme.store.model.Store;
+import com.invilla.acme.commons.model.Store;
 import com.invilla.acme.store.repository.StoreRepository;
 import com.invilla.acme.store.service.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.invilla.acme.store.repository.specification;
 
-import com.invilla.acme.store.model.Store;
+import com.invilla.acme.commons.model.Store;
 import org.springframework.data.jpa.domain.Specification;
 
 public class StoreSpecification {
