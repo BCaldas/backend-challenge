@@ -1,7 +1,7 @@
 package com.invilla.acme.order.service.imp;
 
-import com.invilla.acme.order.enums.EItemStatus;
-import com.invilla.acme.order.model.Item;
+import com.invilla.acme.commons.model.Item;
+import com.invilla.acme.commons.model.enums.EItemStatus;
 import com.invilla.acme.order.repository.ItemRepository;
 import com.invilla.acme.order.service.ItemService;
 import com.invilla.acme.order.service.PaymentService;

@@ -1,6 +1,6 @@
 package com.invilla.acme.order.controller;
 
-import com.invilla.acme.order.model.Item;
+import com.invilla.acme.commons.model.Item;
 import com.invilla.acme.order.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;

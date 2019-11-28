@@ -1,8 +1,8 @@
 package com.invilla.acme.order.controller;
 
-import com.invilla.acme.order.enums.EOrderStatus;
-import com.invilla.acme.order.model.Order;
-import com.invilla.acme.order.model.Payment;
+import com.invilla.acme.commons.model.Order;
+import com.invilla.acme.commons.model.Payment;
+import com.invilla.acme.commons.model.enums.EOrderStatus;
 import com.invilla.acme.order.repository.OrderFilter;
 import com.invilla.acme.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;

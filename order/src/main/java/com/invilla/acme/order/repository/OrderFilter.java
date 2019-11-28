@@ -1,6 +1,6 @@
 package com.invilla.acme.order.repository;
 
-import com.invilla.acme.order.enums.EOrderStatus;
+import com.invilla.acme.commons.model.enums.EOrderStatus;
 
 import java.time.LocalDate;
 

@@ -9,6 +9,9 @@ spring:
     password: root
     driverClassName: com.mysql.cj.jdbc.Driver
 
+store:
+  url: http://localhost:8090/store
+
 eureka:
   client:
     enabled: false

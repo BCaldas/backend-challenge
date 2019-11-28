@@ -1,7 +1,7 @@
 package com.invilla.acme.order.service;
 
-import com.invilla.acme.order.model.Order;
-import com.invilla.acme.order.model.Payment;
+import com.invilla.acme.commons.model.Order;
+import com.invilla.acme.commons.model.Payment;
 import com.invilla.acme.order.repository.OrderFilter;
 
 import java.util.List;

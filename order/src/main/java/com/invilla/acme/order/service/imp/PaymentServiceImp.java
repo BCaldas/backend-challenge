@@ -1,7 +1,7 @@
 package com.invilla.acme.order.service.imp;
 
-import com.invilla.acme.order.enums.EOrderStatus;
-import com.invilla.acme.order.model.Order;
+import com.invilla.acme.commons.model.Order;
+import com.invilla.acme.commons.model.enums.EOrderStatus;
 import com.invilla.acme.order.service.PaymentService;
 import org.springframework.stereotype.Service;
 

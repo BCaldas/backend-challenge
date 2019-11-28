@@ -1,7 +1,7 @@
 package com.invilla.acme.order.repository;
 
-import com.invilla.acme.order.enums.EOrderStatus;
-import com.invilla.acme.order.model.Order;
+import com.invilla.acme.commons.model.Order;
+import com.invilla.acme.commons.model.enums.EOrderStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

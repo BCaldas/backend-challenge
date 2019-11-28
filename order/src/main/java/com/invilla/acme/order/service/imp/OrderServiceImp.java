@@ -1,15 +1,19 @@
 package com.invilla.acme.order.service.imp;
 
-import com.invilla.acme.order.enums.EItemStatus;
-import com.invilla.acme.order.enums.EOrderStatus;
-import com.invilla.acme.order.enums.EPaymentStatus;
-import com.invilla.acme.order.model.Order;
-import com.invilla.acme.order.model.Payment;
+import com.invilla.acme.commons.model.Order;
+import com.invilla.acme.commons.model.Payment;
+import com.invilla.acme.commons.model.Store;
+import com.invilla.acme.commons.model.enums.EItemStatus;
+import com.invilla.acme.commons.model.enums.EOrderStatus;
+import com.invilla.acme.commons.model.enums.EPaymentStatus;
 import com.invilla.acme.order.repository.OrderFilter;
 import com.invilla.acme.order.repository.OrderRepository;
+import com.invilla.acme.order.repository.http.StoreHttpRepository;
 import com.invilla.acme.order.service.OrderService;
 import com.invilla.acme.order.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
@@ -25,8 +29,16 @@ public class OrderServiceImp implements OrderService {
     @Autowired
     private PaymentService paymentService;
 
+    @Autowired
+    private StoreHttpRepository storeHttpRepository;
+
     @Override
     public Order addOrder(Order newOrder) {
+        ResponseEntity<Store> retrivedStore = storeHttpRepository.getStoreById(newOrder.getStoreId());
+
+        if (retrivedStore.getStatusCode() != HttpStatus.OK) {
+            throw new RuntimeException("Store not found.");
+        }
         newOrder.setStatus(EOrderStatus.PAYMENT_PENDING);
         newOrder.getItems().forEach(item -> {
             item.setOrder(newOrder);
