@@ -1,6 +1,6 @@
 package com.invilla.acme.order.repository;
 
-import com.invilla.acme.order.enums.EStatus;
+import com.invilla.acme.order.enums.EOrderStatus;
 import com.invilla.acme.order.model.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -16,5 +16,5 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
             " and (:status is null or o.status = :status)")
     List<Order> findWithFilter(@Param("address") String address,
                                @Param("confirmationDate") LocalDate confirmationDate,
-                               @Param("status") EStatus status);
+                               @Param("status") EOrderStatus status);
 }

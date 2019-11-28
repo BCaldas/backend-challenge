@@ -1,6 +1,6 @@
 package com.invilla.acme.order.repository;
 
-import com.invilla.acme.order.enums.EStatus;
+import com.invilla.acme.order.enums.EOrderStatus;
 
 import java.time.LocalDate;
 
@@ -10,7 +10,7 @@ public class OrderFilter {
 
     private LocalDate confirmationDate;
 
-    private EStatus status;
+    private EOrderStatus status;
 
     public String getAddress() {
         return address;
@@ -28,11 +28,11 @@ public class OrderFilter {
         this.confirmationDate = confirmationDate;
     }
 
-    public EStatus getStatus() {
+    public EOrderStatus getStatus() {
         return status;
     }
 
-    public void setStatus(EStatus status) {
+    public void setStatus(EOrderStatus status) {
         this.status = status;
     }
 }
